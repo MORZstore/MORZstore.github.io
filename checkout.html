@@ -321,7 +321,7 @@
                 let products = JSON.parse(localStorage.getItem('productsInCart')) || allProducts;
                 let numOfProducts = products.length
                 badgePill.innerHTML = numOfProducts
-                totalPay.innerHTML=ftotal;
+                totalPay.innerHTML="$"+ftotal;
                 let productUI = products.map((item) => {
                     return(
                     `<li class="list-group-item d-flex justify-content-between lh-condensed">

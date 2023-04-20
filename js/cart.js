@@ -65,8 +65,8 @@ for (i =0; i<myValues2.length;i++)
 {
      var myTable = document.getElementById('shopTable');
      quantity[i]=myTable.rows[i+1].cells[4].innerHTML;
-     myTable.rows[i+1].cells[5].innerHTML = parseInt(myTable.rows[i+1].cells[3].innerHTML)*parseInt(myTable.rows[i+1].cells[4].innerHTML);
-     total=total+parseInt(myTable.rows[i+1].cells[5].innerHTML) ;}
+     myTable.rows[i+1].cells[5].innerHTML = "$"+parseInt(myTable.rows[i+1].cells[3].innerHTML)*parseInt(myTable.rows[i+1].cells[4].innerHTML);
+     total=total+parseInt(myTable.rows[i+1].cells[3].innerHTML)*parseInt(myTable.rows[i+1].cells[4].innerHTML) ;}
     localStorage.setItem('oldquantity', JSON.stringify(quantity));
     localStorage.setItem('tot', total);
 }
