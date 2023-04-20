@@ -11,6 +11,8 @@ function drawCartProducts(allProducts){
         tableDom.style.display = "none";
         noProductsDom.innerHTML = `<p>There is no products in cart !!</p>`
     }
+if (JSON.parse(localStorage.getItem('productsInCart')).length != 0) {
+
     let products = JSON.parse(localStorage.getItem('productsInCart')) || allProducts;
     let productUI = products.map((item) => {
         return(`<tr>
@@ -22,10 +24,10 @@ function drawCartProducts(allProducts){
                     <td><h5>${item.title}</h5></td>
                     <td>${item.price}</td>
                     <td>1</td>
-                    <td>${item.price}</td>
+                    <td>$${item.price}</td>
                 </tr>`);
     }).join('');
-    productsDom.innerHTML = productUI;
+    productsDom.innerHTML = productUI;}
     
 }
 drawCartProducts();
@@ -75,16 +77,16 @@ for (i =0; i<myValues2.length;i++)
 
 function readquantity()
 {if (JSON.parse(localStorage.getItem('oldquantity')).length != 0 && JSON.parse(localStorage.getItem('productsInCart')).length != 0)
-   {oldq=JSON.parse(localStorage.getItem('oldquantity'));
+   {
+   oldq=JSON.parse(localStorage.getItem('oldquantity'));
    myValues=localStorage.getItem('productsInCart')
    myValues2=JSON.parse(myValues);
    for (i =0; i<myValues2.length;i++)
-    {
-        var myTable = document.getElementById('shopTable');
+    {var myTable = document.getElementById('shopTable');
         if (oldq[i]>1){
         myTable.rows[i+1].cells[4].innerHTML = oldq[i];
         myTable.rows[i+1].cells[5].innerHTML = parseInt(myTable.rows[i+1].cells[3].innerHTML)*parseInt(myTable.rows[i+1].cells[4].innerHTML);}}
-updatequantity();}}
+        updatequantity();}}
 
 
 
@@ -106,6 +108,5 @@ function removeItemFromCart(id) {
         if (JSON.parse(localStorage.getItem('productsInCart')).length === 0) {
             badgeDom.style.display = "none";} 
        else {badgeDom.style.display = "inline";}
-        
        drawCartProducts(filteredItem);
-        readquantity();}}
+       readquantity();}}
